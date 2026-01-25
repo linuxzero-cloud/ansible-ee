@@ -1,0 +1,23 @@
+ansible-lint
+cryptography
+jinja2 >= 3.0.0
+jmespath
+memcache
+netaddr
+packaging
+paramiko
+pexpect
+psutil
+pyjwt
+python-dateutil
+pywinrm
+PyYAML >= 5.1
+redis
+requests
+requests-ntlm
+six
+yq
+resolvelib >= 0.5.3, < 0.9.0
+#openshift
+#kubernetes
+#openstacksdk

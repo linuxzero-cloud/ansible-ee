@@ -1,0 +1,35 @@
+---
+version: 3
+
+build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "--pre"
+
+images:
+  base_image:
+    name: registry.access.redhat.com/ubi9/ubi-minimal:latest
+
+additional_build_steps:
+  append_final:
+  - LABEL ansible-execution-environment=true python_version=3.9 ansible_version=2.14.18
+
+dependencies:
+  python_interpreter:
+    package_system: python3
+    python_path: /usr/bin/python3.9
+  ansible_core:
+    package_pip: ansible-core==2.14.18
+  ansible_runner:
+    package_pip: ansible-runner
+  python: requirements.txt
+  system: bindep.txt
+  galaxy: requirements.yml
+
+options:
+  container_init:
+    cmd: '["bash"]'
+    entrypoint: '["/opt/builder/bin/entrypoint", "dumb-init"]'
+    package_pip: dumb-init==1.2.5
+  package_manager_path: /usr/bin/microdnf
+  relax_passwd_permissions: true
+  workdir: /runner
+  user: '1000'
