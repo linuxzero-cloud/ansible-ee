@@ -1,6 +1,7 @@
 setuptools_rust
 rust
 cryptography
+passlib
 jinja2
 jmespath
 memcache
